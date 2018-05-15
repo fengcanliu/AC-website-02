@@ -17,17 +17,17 @@ $(document).ready(function () {
         pointHoverBorderColor: "rgba(255, 204, 0, 1)",
         data: temperatureData
       },
-      {
-        fill: false,
-        label: 'actual',
-        yAxisID: 'actual',
-        borderColor: "rgba(24, 120, 240, 1)",
-        pointBoarderColor: "rgba(24, 120, 240, 1)",
-        backgroundColor: "rgba(24, 120, 240, 0.4)",
-        pointHoverBackgroundColor: "rgba(24, 120, 240, 1)",
-        pointHoverBorderColor: "rgba(24, 120, 240, 1)",
-        data: actualData
-      },
+      // {
+      //   fill: false,
+      //   label: 'actual',
+      //   yAxisID: 'actual',
+      //   borderColor: "rgba(24, 120, 240, 1)",
+      //   pointBoarderColor: "rgba(24, 120, 240, 1)",
+      //   backgroundColor: "rgba(24, 120, 240, 0.4)",
+      //   pointHoverBackgroundColor: "rgba(24, 120, 240, 1)",
+      //   pointHoverBorderColor: "rgba(24, 120, 240, 1)",
+      //   data: actualData
+      // },
       {
         fill: false,
         label: 'noSensor',
@@ -62,7 +62,7 @@ $(document).ready(function () {
           type: 'linear',
           scaleLabel: {
             labelString: 'Actual(C)',
-            display: false
+            display: true
           },
           position: 'right'
         }]
@@ -97,6 +97,8 @@ $(document).ready(function () {
       if (len > maxLen) {
         timeData.shift();
         temperatureData.shift();
+        actualData.shift();
+        nosensorData.shift();
       }
 
       if (obj.actual) {
@@ -105,7 +107,7 @@ $(document).ready(function () {
       if (actualData.length > maxLen) {
         actualData.shift();
       }
-       if (obj.noSensor) {
+      if (obj.noSensor) {
         nosensorData.push(obj.noSensor);
       }
       if (nosensorData.length > maxLen) {
