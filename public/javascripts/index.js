@@ -2,7 +2,7 @@ $(document).ready(function () {
   var timeData = [],
     temperatureData = [],
     actualData = [],
-    noensorData = [];
+    nosensorData = [];
   var data = {
     labels: timeData,
     datasets: [
