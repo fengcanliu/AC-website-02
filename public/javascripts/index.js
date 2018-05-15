@@ -20,7 +20,7 @@ $(document).ready(function () {
       {
         fill: false,
         label: 'actual',
-        yAxisID: 'actual',
+        yAxisID: 'Temperature',
         borderColor: "rgba(24, 120, 240, 1)",
         pointBoarderColor: "rgba(24, 120, 240, 1)",
         backgroundColor: "rgba(24, 120, 240, 0.4)",
@@ -31,7 +31,7 @@ $(document).ready(function () {
       {
         fill: false,
         label: 'noSensor',
-        yAxisID: 'noSensor',
+        yAxisID: 'Temperature',
         borderColor: "rgba(124, 252, 0, 1)",
         pointBoarderColor: "rgba(124, 252, 0, 1)",
         backgroundColor: "rgba(124, 252, 0, 0.4)",
