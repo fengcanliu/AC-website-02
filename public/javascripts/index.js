@@ -80,12 +80,12 @@ $(document).ready(function () {
       timeData.push(obj.time);
       temperatureData.push(obj.temperature);
       // only keep no more than 50 points in the line chart
-      const maxLen = 50;
+      const maxLen = 50000;
       var len = timeData.length;
-      // if (len > maxLen) {
-      //   timeData.shift();
-      //   temperatureData.shift();
-      // }
+      if (len > maxLen) {
+        timeData.shift();
+        temperatureData.shift();
+      }
 
       if (obj.actual) {
         actualData.push(obj.actual);
