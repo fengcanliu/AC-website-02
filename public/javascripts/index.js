@@ -2,7 +2,7 @@ $(document).ready(function () {
   var timeData = [],
     temperatureData = [],
     actualData = [],
-    nosensorData = [];
+    noensorData = [];
   var data = {
     labels: timeData,
     datasets: [
@@ -34,10 +34,10 @@ $(document).ready(function () {
         yAxisID: 'noSensor',
         borderColor: "rgba(124, 252, 0, 1)",
         pointBoarderColor: "rgba(124, 252, 0, 1)",
-        backgroundColor: "rgba(124, 252, 0, 1)",
+        backgroundColor: "rgba(124, 252, 0, 0.4)",
         pointHoverBackgroundColor: "rgba(124, 252, 0, 1)",
         pointHoverBorderColor: "rgba(124, 252, 0, 1)",
-        data: actualData
+        data: nosensorData
       }
     ]
   }
