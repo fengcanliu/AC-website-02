@@ -57,16 +57,15 @@ $(document).ready(function () {
           display: true
         },
         position: 'left',
-      }]
-      // }, {
-      //     id: 'actual',
-      //     type: 'linear',
-      //     scaleLabel: {
-      //       labelString: 'Actual(C)',
-      //       display: false
-      //     },
-      //     position: 'right'
-      //   }]
+      }, {
+          id: 'actual',
+          type: 'linear',
+          scaleLabel: {
+            labelString: 'Actual(C)',
+            display: false
+          },
+          position: 'right'
+        }]
     }
   }
 
