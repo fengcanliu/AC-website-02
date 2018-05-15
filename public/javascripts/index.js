@@ -3,6 +3,7 @@ $(document).ready(function () {
   var temperatureData = [];
   var actualData = [];
   var nosensorData = [];
+  var counter = 1;
   var data = {
     labels: timeData,
     datasets: [
@@ -96,7 +97,8 @@ $(document).ready(function () {
       if(!obj.time || !obj.temperature) {
         return;
       }
-      timeData.push(obj.time);
+
+      timeData.push(counter*0.25);
       temperatureData.push(obj.temperature);
       // only keep no more than 50 points in the line chart
       const maxLen = 50000;
