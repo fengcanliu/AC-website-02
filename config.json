@@ -1,0 +1,4 @@
+{
+"localhost": 3000,
+"iotHubConnString": "HostName=comp6324-project.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=IbJA5aYEmbVZLnETBANkQQ4J3XrW8PZ8OKz605F5DWk="
+}
