@@ -99,6 +99,7 @@ $(document).ready(function () {
       }
 
       timeData.push(counter*0.25);
+      counter = counter+1;
       temperatureData.push(obj.temperature);
       // only keep no more than 50 points in the line chart
       const maxLen = 50000;
