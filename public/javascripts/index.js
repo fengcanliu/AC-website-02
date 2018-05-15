@@ -1,7 +1,8 @@
 $(document).ready(function () {
   var timeData = [],
     temperatureData = [],
-    actualData = [];
+    actualData = [],
+    nosensorData = [];
   var data = {
     labels: timeData,
     datasets: [
@@ -26,6 +27,17 @@ $(document).ready(function () {
         pointHoverBackgroundColor: "rgba(24, 120, 240, 1)",
         pointHoverBorderColor: "rgba(24, 120, 240, 1)",
         data: actualData
+      },
+      {
+        fill: false,
+        label: 'noSensor',
+        yAxisID: 'noSensor',
+        borderColor: "rgba(124, 252, 0, 1)",
+        pointBoarderColor: "rgba(124, 252, 0, 1)",
+        backgroundColor: "rgba(124, 252, 0, 1)",
+        pointHoverBackgroundColor: "rgba(124, 252, 0, 1)",
+        pointHoverBorderColor: "rgba(124, 252, 0, 1)",
+        data: actualData
       }
     ]
   }
@@ -45,15 +57,16 @@ $(document).ready(function () {
           display: true
         },
         position: 'left',
-      }, {
-          id: 'actual',
-          type: 'linear',
-          scaleLabel: {
-            labelString: 'Actual(C)',
-            display: false
-          },
-          position: 'right'
-        }]
+      }]
+      // }, {
+      //     id: 'actual',
+      //     type: 'linear',
+      //     scaleLabel: {
+      //       labelString: 'Actual(C)',
+      //       display: false
+      //     },
+      //     position: 'right'
+      //   }]
     }
   }
 
@@ -92,6 +105,12 @@ $(document).ready(function () {
       }
       if (actualData.length > maxLen) {
         actualData.shift();
+      }
+       if (obj.noSensor) {
+        nosensorData.push(obj.noSensor);
+      }
+      if (nosensorData.length > maxLen) {
+        nosensorData.shift();
       }
 
       myLineChart.update();
