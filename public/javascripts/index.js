@@ -94,13 +94,13 @@ $(document).ready(function () {
     console.log('receive message' + message.data);
     try {
       var obj = JSON.parse(message.data);
-      if(!obj.time || !obj.temperature) {
+      if(!obj.time || !obj.OTtemperature) {
         return;
       }
 
       timeData.push(counter*0.25);
       counter = counter+1;
-      temperatureData.push(obj.temperature);
+      temperatureData.push(obj.OTtemperature);
       // only keep no more than 50 points in the line chart
       const maxLen = 50000;
       var len = timeData.length;
