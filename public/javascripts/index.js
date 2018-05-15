@@ -49,8 +49,8 @@ $(document).ready(function () {
           id: 'actual',
           type: 'linear',
           scaleLabel: {
-            labelString: 'Actual(%)',
-            display: true
+            labelString: 'Actual(C)',
+            display: false
           },
           position: 'right'
         }]
@@ -78,7 +78,7 @@ $(document).ready(function () {
         return;
       }
       timeData.push(obj.time);
-      temperatureData.push(obj.temperature);
+      temperatureData.push(obj.OTtemperature);
       // only keep no more than 50 points in the line chart
       const maxLen = 50000;
       var len = timeData.length;
