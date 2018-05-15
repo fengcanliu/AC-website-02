@@ -1,7 +1,7 @@
 $(document).ready(function () {
   var timeData = [],
     temperatureData = [],
-    actualData = []，
+    actualData = [],
     nosensorData = [];
   var data = {
     labels: timeData,
