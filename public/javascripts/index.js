@@ -57,22 +57,29 @@ $(document).ready(function () {
           display: true
         },
         position: 'left',
-      }, {
-          id: 'actual',
-          type: 'linear',
-          scaleLabel: {
-            labelString: 'Actual(C)',
-            display: true
-          },
-          position: 'right'
         }]
+      // }, {
+      //     id: 'actual',
+      //     type: 'linear',
+      //     scaleLabel: {
+      //       labelString: 'Actual(C)',
+      //       display: true
+      //     },
+      //     position: 'right'
+      //   }]
     }
   }
 
   //Get the context of the canvas element we want to select
   var ctx = document.getElementById("myChart");
+  var ctx1 = document.getElementById("myChart1");
   var optionsNoAnimation = { animation: false }
   var myLineChart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: basicOption
+  });
+  var myLineChart1 = new Chart(ctx1, {
     type: 'line',
     data: data,
     options: basicOption
@@ -115,6 +122,8 @@ $(document).ready(function () {
       }
 
       myLineChart.update();
+      myLineChart1.update();
+
     } catch (err) {
       console.error(err);
     }
