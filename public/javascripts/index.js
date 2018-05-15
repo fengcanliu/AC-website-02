@@ -50,7 +50,7 @@ $(document).ready(function () {
           type: 'linear',
           scaleLabel: {
             labelString: 'Actual(C)',
-            display: true
+            display: false
           },
           position: 'right'
         }]
