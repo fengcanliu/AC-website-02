@@ -1,8 +1,8 @@
 $(document).ready(function () {
-  var timeData = [],
-    temperatureData = [],
-    actualData = [],
-    nosensorData = [];
+  var timeData = [];
+  var temperatureData = [];
+  var actualData = [];
+  var nosensorData = [];
   var data = {
     labels: timeData,
     datasets: [
@@ -70,7 +70,7 @@ $(document).ready(function () {
   }
 
   //Get the context of the canvas element we want to select
-  var ctx = document.getElementById("myChart").getContext("3d");
+  var ctx = document.getElementById("myChart");
   var optionsNoAnimation = { animation: false }
   var myLineChart = new Chart(ctx, {
     type: 'line',
