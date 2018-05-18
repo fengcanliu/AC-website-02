@@ -43,10 +43,10 @@ $(document).ready(function () {
     ]
   }
 
-  var basicOption = {
+var basicOption = {
     title: {
       display: true,
-      text: 'Temperature & actual Real-time Data',
+      text: 'With our IoT solution',
       fontSize: 36
     },
     scales: {
@@ -59,15 +59,25 @@ $(document).ready(function () {
         },
         position: 'left',
         }]
-      // }, {
-      //     id: 'actual',
-      //     type: 'linear',
-      //     scaleLabel: {
-      //       labelString: 'Actual(C)',
-      //       display: true
-      //     },
-      //     position: 'right'
-      //   }]
+    }
+  }
+
+var basicOption1 = {
+    title: {
+      display: true,
+      text: 'Without our IoT solution',
+      fontSize: 36
+    },
+    scales: {
+      yAxes: [{
+        id: 'Temperature',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'Temperature(C)',
+          display: true
+        },
+        position: 'left',
+        }]
     }
   }
 
@@ -83,7 +93,7 @@ $(document).ready(function () {
   var myLineChart1 = new Chart(ctx1, {
     type: 'line',
     data: data,
-    options: basicOption
+    options: basicOption1
   });
 
   var ws = new WebSocket('wss://' + location.host);
