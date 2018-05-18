@@ -3,6 +3,12 @@ $(document).ready(function () {
   var temperatureData = [];
   var actualData = [];
   var nosensorData = [];
+
+  var timeData1 = [];
+  var temperatureData1 = [];
+  var actualData1 = [];
+  var nosensorData1 = [];
+
   var counter = 1;
   var data = {
     labels: timeData,
@@ -46,7 +52,7 @@ $(document).ready(function () {
 var basicOption = {
     title: {
       display: true,
-      text: 'With our IoT solution',
+      text: 'Our IoT solution in a cooled room',
       fontSize: 36
     },
     scales: {
@@ -65,7 +71,7 @@ var basicOption = {
 var basicOption1 = {
     title: {
       display: true,
-      text: 'Without our IoT solution',
+      text: 'Our IoT solution in a heated room',
       fontSize: 36
     },
     scales: {
@@ -107,32 +113,59 @@ var basicOption1 = {
       if(!obj.time || !obj.OTtemperature) {
         return;
       }
-
-      timeData.push(counter*0.25);
       counter = counter+1;
-      temperatureData.push(obj.OTtemperature);
+      
       // only keep no more than 50 points in the line chart
       const maxLen = 50000;
-      var len = timeData.length;
-      if (len > maxLen) {
-        timeData.shift();
-        temperatureData.shift();
-        actualData.shift();
-        nosensorData.shift();
+      
+
+      if(obj.actual == 'tutorial_room'){
+        timeData.push(counter*0.25);
+        temperatureData.push(obj.OTtemperature);
+        var len = timeData1.length;
+        if (len > maxLen) {
+          timeData.shift();
+          temperatureData.shift();
+          actualData.shift();
+          nosensorData.shift();
+        }
+        if (obj.actual) {
+          actualData.push(obj.actual);
+        }
+        if (actualData.length > maxLen) {
+          actualData.shift();
+        }
+        if (obj.noSensor) {
+          nosensorData.push(obj.noSensor);
+        }
+        if (nosensorData.length > maxLen) {
+          nosensorData.shift();
+        }        
+      } else {
+        timeData1.push(counter*0.25);
+        temperatureData1.push(obj.OTtemperature);
+        var len = timeData1.length;
+        if (len > maxLen) {
+          timeData1.shift();
+          temperatureData1.shift();
+          actualData1.shift();
+          nosensorData1.shift();
+        }
+
+        if (obj.actual) {
+          actualData1.push(obj.actual);
+        }
+        if (actualData1.length > maxLen) {
+          actualData1.shift();
+        }
+        if (obj.noSensor) {
+          nosensorData1.push(obj.noSensor);
+        }
+        if (nosensorData1.length > maxLen) {
+          nosensorData1.shift();
+        }                
       }
 
-      if (obj.actual) {
-        actualData.push(obj.actual);
-      }
-      if (actualData.length > maxLen) {
-        actualData.shift();
-      }
-      if (obj.noSensor) {
-        nosensorData.push(obj.noSensor);
-      }
-      if (nosensorData.length > maxLen) {
-        nosensorData.shift();
-      }
 
       myLineChart.update();
       myLineChart1.update();
