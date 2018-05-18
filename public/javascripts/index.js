@@ -180,6 +180,8 @@ var basicOption1 = {
           if (nosensorData.length > maxLen) {
             nosensorData.shift();
           }        
+
+          myLineChart.update();
       } else {
           timeData1.push(counter*0.25);
           temperatureData1.push(obj.OTtemperature);
@@ -202,13 +204,9 @@ var basicOption1 = {
           }
           if (nosensorData1.length > maxLen) {
             nosensorData1.shift();
-          }                
+          }     
+          myLineChart1.update();           
       }
-
-
-      myLineChart.update();
-      myLineChart1.update();
-
     } catch (err) {
       console.error(err);
     }
