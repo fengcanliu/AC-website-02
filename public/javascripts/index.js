@@ -158,10 +158,10 @@ var basicOption1 = {
       const maxLen = 50000;
       
 
-      if(obj.actual == 'tutorial_room'){
+      if(obj.deviceid == 'tutorial_room'){
           timeData.push(counter*0.25);
           temperatureData.push(obj.OTtemperature);
-          var len = timeData1.length;
+          var len = timeData.length;
           if (len > maxLen) {
             timeData.shift();
             temperatureData.shift();
