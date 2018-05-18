@@ -49,6 +49,45 @@ $(document).ready(function () {
     ]
   }
 
+  var data1 = {
+    labels: timeData1,
+    datasets: [
+      {
+        fill: false,
+        label: 'Temperature',
+        yAxisID: 'Temperature',
+        borderColor: "rgba(255, 204, 0, 1)",
+        pointBoarderColor: "rgba(255, 204, 0, 1)",
+        backgroundColor: "rgba(255, 204, 0, 0.4)",
+        pointHoverBackgroundColor: "rgba(255, 204, 0, 1)",
+        pointHoverBorderColor: "rgba(255, 204, 0, 1)",
+        data: temperatureData1
+      },
+      {
+        fill: false,
+        label: 'actual',
+        yAxisID: 'Temperature',
+        borderColor: "rgba(24, 120, 240, 1)",
+        pointBoarderColor: "rgba(24, 120, 240, 1)",
+        backgroundColor: "rgba(24, 120, 240, 0.4)",
+        pointHoverBackgroundColor: "rgba(24, 120, 240, 1)",
+        pointHoverBorderColor: "rgba(24, 120, 240, 1)",
+        data: actualData1
+      },
+      {
+        fill: false,
+        label: 'noSensor',
+        yAxisID: 'Temperature',
+        borderColor: "rgba(124, 252, 0, 1)",
+        pointBoarderColor: "rgba(124, 252, 0, 1)",
+        backgroundColor: "rgba(124, 252, 0, 0.4)",
+        pointHoverBackgroundColor: "rgba(124, 252, 0, 1)",
+        pointHoverBorderColor: "rgba(124, 252, 0, 1)",
+        data: nosensorData1
+      }
+    ]
+  }
+
 var basicOption = {
     title: {
       display: true,
@@ -98,7 +137,7 @@ var basicOption1 = {
   });
   var myLineChart1 = new Chart(ctx1, {
     type: 'line',
-    data: data,
+    data1: data1,
     options: basicOption1
   });
 
@@ -120,50 +159,50 @@ var basicOption1 = {
       
 
       if(obj.actual == 'tutorial_room'){
-        timeData.push(counter*0.25);
-        temperatureData.push(obj.OTtemperature);
-        var len = timeData1.length;
-        if (len > maxLen) {
-          timeData.shift();
-          temperatureData.shift();
-          actualData.shift();
-          nosensorData.shift();
-        }
-        if (obj.actual) {
-          actualData.push(obj.actual);
-        }
-        if (actualData.length > maxLen) {
-          actualData.shift();
-        }
-        if (obj.noSensor) {
-          nosensorData.push(obj.noSensor);
-        }
-        if (nosensorData.length > maxLen) {
-          nosensorData.shift();
-        }        
+          timeData.push(counter*0.25);
+          temperatureData.push(obj.OTtemperature);
+          var len = timeData1.length;
+          if (len > maxLen) {
+            timeData.shift();
+            temperatureData.shift();
+            actualData.shift();
+            nosensorData.shift();
+          }
+          if (obj.actual) {
+            actualData.push(obj.actual);
+          }
+          if (actualData.length > maxLen) {
+            actualData.shift();
+          }
+          if (obj.noSensor) {
+            nosensorData.push(obj.noSensor);
+          }
+          if (nosensorData.length > maxLen) {
+            nosensorData.shift();
+          }        
       } else {
-        timeData1.push(counter*0.25);
-        temperatureData1.push(obj.OTtemperature);
-        var len = timeData1.length;
-        if (len > maxLen) {
-          timeData1.shift();
-          temperatureData1.shift();
-          actualData1.shift();
-          nosensorData1.shift();
-        }
+          timeData1.push(counter*0.25);
+          temperatureData1.push(obj.OTtemperature);
+          var len = timeData1.length;
+          if (len > maxLen) {
+            timeData1.shift();
+            temperatureData1.shift();
+            actualData1.shift();
+            nosensorData1.shift();
+          }
 
-        if (obj.actual) {
-          actualData1.push(obj.actual);
-        }
-        if (actualData1.length > maxLen) {
-          actualData1.shift();
-        }
-        if (obj.noSensor) {
-          nosensorData1.push(obj.noSensor);
-        }
-        if (nosensorData1.length > maxLen) {
-          nosensorData1.shift();
-        }                
+          if (obj.actual) {
+            actualData1.push(obj.actual);
+          }
+          if (actualData1.length > maxLen) {
+            actualData1.shift();
+          }
+          if (obj.noSensor) {
+            nosensorData1.push(obj.noSensor);
+          }
+          if (nosensorData1.length > maxLen) {
+            nosensorData1.shift();
+          }                
       }
 
 
