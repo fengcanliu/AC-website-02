@@ -10,6 +10,7 @@ $(document).ready(function () {
   var nosensorData1 = [];
 
   var counter = 1;
+  var counter1 = 1;
   var data = {
     labels: timeData,
     datasets: [
@@ -152,13 +153,12 @@ var basicOption1 = {
       if(!obj.time || !obj.OTtemperature) {
         return;
       }
-      counter = counter+1;
       
       // only keep no more than 50 points in the line chart
       const maxLen = 50000;
       
-
-      if(obj.deviceid == 'tutorial_room'){
+      if(obj.deviceid === 'tutorial_room'){
+          counter = counter+1;
           timeData.push(counter*0.25);
           temperatureData.push(obj.OTtemperature);
           var len = timeData.length;
@@ -182,7 +182,8 @@ var basicOption1 = {
           }        
 
           myLineChart.update();
-      } else {
+      } else if(obj.deviceid === 'tutorial_room_heated') {
+          counter1 = counter1+1;
           timeData1.push(counter*0.25);
           temperatureData1.push(obj.OTtemperature);
           var len = timeData1.length;
