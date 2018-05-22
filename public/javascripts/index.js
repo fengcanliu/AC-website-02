@@ -23,7 +23,7 @@ $(document).ready(function () {
             a = x;
         }
         console.log("+++++++++++a is "+a+"b is "+b);
-        return dictionary.storage[a][b];
+        return dictionary[a][b];
     },
     put: function (a, b, value){
         if (a > b){
@@ -32,8 +32,8 @@ $(document).ready(function () {
             a = x;
         }
         if (typeof this.storage[a] !== "object")
-            this.storage[a] = {};
-        this.storage[a][b] = value;
+            dictionary[a] = {};
+        dictionary[a][b] = value;
     }
 }
 
