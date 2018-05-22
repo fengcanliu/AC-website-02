@@ -209,6 +209,7 @@ var basicOption1 = {
 
       cost = dictionary.get(coolingCapacity,Math.round(temperature));
       if (cost == "undefined"){
+        console.log("here!!!!!")
         cost = 0;
       } 
 
@@ -216,6 +217,7 @@ var basicOption1 = {
     if(type === "HEATING"){
       cost = dictionary.get(coolingCapacity,Math.round(temperature));
       if (cost == "undefined"){
+        console.log("here!!!!!")
         cost = 0;
       } 
     }  
@@ -279,9 +281,12 @@ var basicOption1 = {
           }        
 
           myLineChart.update();
-          if ((obj.actual === obj.noSensor) && (obj.noSensor === obj.temperature) && (obj.actual === obj.temperature)){
+          if ((obj.actual == obj.noSensor) && (obj.noSensor == obj.temperature) && (obj.actual == obj.temperature)){
             costResultActual = costResultActual;
             costResultNoSensor = costResultNoSensor;
+
+            console.log("acutal Equal "+costResultActual+" noSensor Equal"+costResultNoSensor);
+
 
             document.getElementById("coolingActualCost").innerHTML = costResultActual.toFixed(2);
             document.getElementById("coolingNoSensorCost").innerHTML = costResultNoSensor.toFixed(2); 
