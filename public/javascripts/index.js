@@ -273,7 +273,7 @@ var basicOption1 = {
           if ((obj.actual === obj.noSensor) && (obj.noSensor === obj.temperature) && (obj.actual === obj.temperature)){
             costResultActual = costResultActual;
             costResultNoSensor = costResultNoSensor;
-            console.log("acutal "+costResultActual+" noSensor "+costResultNoSensor);
+            
             document.getElementById("coolingActualCost").innerHTML = costResultActual.toFixed(2);
             document.getElementById("coolingNoSensorCost").innerHTML = costResultNoSensor.toFixed(2); 
           } else {
