@@ -205,13 +205,14 @@ var basicOption1 = {
     }
 
     if(type === "COOLING"){
-      if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined"){
+      if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined")){
         cost = 0;
       } else {
         cost = cost+dictionary.get(coolingCapacity,Math.round(temperature));
-    } 
+    }
+
     if(type === "HEATING"){
-     if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined"){
+     if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined")){
         cost = 0;
       } else {
         cost = cost+dictionary.get(coolingCapacity,Math.round(temperature));
@@ -219,6 +220,7 @@ var basicOption1 = {
 
     return cost;
   }
+
 
   //Get the context of the canvas element we want to select
   var ctx = document.getElementById("myChart");
