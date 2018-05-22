@@ -23,7 +23,7 @@ $(document).ready(function () {
             b = a;
             a = x;
         }
-        console.log("+++++++++++a is "+a+"b is "+b);
+        // console.log("+++++++++++a is "+a+"b is "+b);
         data = this.storage[a][b];
         return data;
     },
@@ -36,7 +36,7 @@ $(document).ready(function () {
         if (typeof this.storage[a] !== "object")
             this.storage[a] = {};
         this.storage[a][b] = value;
-        console.log("++++++saving ["+a+"] and ["+b+"]");
+        // console.log("++++++saving ["+a+"] and ["+b+"]");
     }
 }
 
@@ -178,16 +178,16 @@ var basicOption1 = {
     if(type === "COOLING"){
       cost = dictionary.get(coolingCapacity,Math.round(temperature));
       if (cost == undefined){
-        console.log("here!!!!!")
+        // console.log("here!!!!!")
         cost = 0;
       } 
 
     } 
     if(type === "HEATING"){
-      console.log("+++++++Temp is "+temperature);
-      cost = dictionary.get(heatCapacity,Math.round(temperature));
+      // console.log("+++++++Temp is "+temperature);
+      cost = dictionary.get(heatingCapacity,Math.round(temperature));
       if (cost == undefined){
-        console.log("here!!!!!")
+        // console.log("here!!!!!")
         cost = 0;
       } 
     }  
@@ -293,7 +293,7 @@ var basicOption1 = {
             costResultActual = costResultActual;
             costResultNoSensor = costResultNoSensor;
 
-            console.log("acutal Equal "+costResultActual+" noSensor Equal"+costResultNoSensor);
+            // console.log("acutal Equal "+costResultActual+" noSensor Equal"+costResultNoSensor);
 
 
             document.getElementById("coolingActualCost").innerHTML = " $"+costResultActual.toFixed(2);
@@ -307,9 +307,9 @@ var basicOption1 = {
              document.getElementById("coolingMoneySaved").innerHTML = " $"+(costResultNoSensor.toFixed(2)-costResultActual.toFixed(2)).toFixed(2); 
 
           }
-         console.log("acutal "+costResultActual+" noSensor "+costResultNoSensor);
+         // console.log("acutal "+costResultActual+" noSensor "+costResultNoSensor);
 
-          console.log('Costing'+getCost(obj.roomsize, obj.actual, "COOLING"));
+          // console.log('Costing'+getCost(obj.roomsize, obj.actual, "COOLING"));
       } else if(obj.deviceid === 'room_heated') {
           counter1 = counter1+1;
           timeData1.push(counter*0.25);
@@ -339,7 +339,7 @@ var basicOption1 = {
             costResultActual1 = costResultActual1;
             costResultNoSensor1 = costResultNoSensor1;
 
-            console.log("acutal Equal "+costResultActual1+" noSensor Equal"+costResultNoSensor1);
+            // console.log("acutal Equal "+costResultActual1+" noSensor Equal"+costResultNoSensor1);
 
 
             document.getElementById("heatingActualCost").innerHTML = " $"+costResultActual1.toFixed(2);
@@ -353,7 +353,7 @@ var basicOption1 = {
              document.getElementById("heatingMoneySaved").innerHTML = " $"+(costResultNoSensor1.toFixed(2)-costResultActual1.toFixed(2)).toFixed(2); 
 
           }
-         console.log("acutal "+costResultActual1+" noSensor "+costResultNoSensor1);          
+         // console.log("acutal "+costResultActual1+" noSensor "+costResultNoSensor1);          
       }
     } catch (err) {
       console.error(err);
