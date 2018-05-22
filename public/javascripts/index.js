@@ -1,14 +1,17 @@
 $(document).ready(function () {
   var timeData = [];
-  var timeDataH = [];
   var temperatureData = [];
   var actualData = [];
   var nosensorData = [];
-  var temperatureDataH = [];
-  var actualDataH = [];
-  var nosensorDataH = [];
+
+  var timeData1 = [];
+  var temperatureData1 = [];
+  var actualData1 = [];
+  var nosensorData1 = [];
+
   var counter = 1;
-  var counterH = 1;
+  var counter1 = 1;
+
   var data = {
     labels: timeData,
     datasets: [
@@ -47,8 +50,9 @@ $(document).ready(function () {
       }
     ]
   }
-var data1 = {
-    labels: timeData,
+
+  var data1 = {
+    labels: timeData1,
     datasets: [
       {
         fill: false,
@@ -59,7 +63,7 @@ var data1 = {
         backgroundColor: "rgba(255, 204, 0, 0.4)",
         pointHoverBackgroundColor: "rgba(255, 204, 0, 1)",
         pointHoverBorderColor: "rgba(255, 204, 0, 1)",
-        data: temperatureDataH
+        data: temperatureData1
       },
       {
         fill: false,
@@ -70,7 +74,7 @@ var data1 = {
         backgroundColor: "rgba(24, 120, 240, 0.4)",
         pointHoverBackgroundColor: "rgba(24, 120, 240, 1)",
         pointHoverBorderColor: "rgba(24, 120, 240, 1)",
-        data: actualDataH
+        data: actualData1
       },
       {
         fill: false,
@@ -81,14 +85,15 @@ var data1 = {
         backgroundColor: "rgba(124, 252, 0, 0.4)",
         pointHoverBackgroundColor: "rgba(124, 252, 0, 1)",
         pointHoverBorderColor: "rgba(124, 252, 0, 1)",
-        data: nosensorDataH
+        data: nosensorData1
       }
     ]
   }
-  var basicOption = {
+
+var basicOption = {
     title: {
       display: true,
-      text: 'Temperature & actual Real-time Data',
+      text: 'Our IoT solution in a cooled room',
       fontSize: 36
     },
     scales: {
@@ -101,15 +106,25 @@ var data1 = {
         },
         position: 'left',
         }]
-      // }, {
-      //     id: 'actual',
-      //     type: 'linear',
-      //     scaleLabel: {
-      //       labelString: 'Actual(C)',
-      //       display: true
-      //     },
-      //     position: 'right'
-      //   }]
+    }
+  }
+
+var basicOption1 = {
+    title: {
+      display: true,
+      text: 'Our IoT solution in a heated room',
+      fontSize: 36
+    },
+    scales: {
+      yAxes: [{
+        id: 'Temperature',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'Temperature(C)',
+          display: true
+        },
+        position: 'left',
+        }]
     }
   }
 
@@ -124,8 +139,8 @@ var data1 = {
   });
   var myLineChart1 = new Chart(ctx1, {
     type: 'line',
-    data: data,
-    options: basicOption
+    data: data1,
+    options: basicOption1
   });
 
   var ws = new WebSocket('wss://' + location.host);
@@ -139,59 +154,60 @@ var data1 = {
       if(!obj.time || !obj.OTtemperature) {
         return;
       }
-      // if(!obj.time || !obj.OTtemperatureH) {
-      //   return;
-      // }
-
-      timeData.push(counter*0.25);
-      // timeDataH.push(counterH*0.25);
-      counter = counter+1;
-      // counterH = counterH+1;
-      temperatureData.push(obj.OTtemperature);
-      // temperatureDataH.push(obj.OTtemperatureH);
       // only keep no more than 50 points in the line chart
       const maxLen = 50000;
-      var len = timeData.length;
-      if (len > maxLen) {
-        timeData.shift();
-        temperatureData.shift();
-        actualData.shift();
-        nosensorData.shift();
-        // temperatureDataH.shift();
-        // actualDataH.shift();
-        // nosensorDataH.shift();
-      }
+      
+      if(obj.deviceid === 'tutorial_room'){
+          counter = counter+1;
+          timeData.push(counter*0.25);
+          temperatureData.push(obj.OTtemperature);
+          var len = timeData.length;
+          if (len > maxLen) {
+            timeData.shift();
+            temperatureData.shift();
+            actualData.shift();
+            nosensorData.shift();
+          }
+          if (obj.actual) {
+            actualData.push(obj.actual);
+          }
+          if (actualData.length > maxLen) {
+            actualData.shift();
+          }
+          if (obj.noSensor) {
+            nosensorData.push(obj.noSensor);
+          }
+          if (nosensorData.length > maxLen) {
+            nosensorData.shift();
+          }        
 
-      if (obj.actual) {
-        actualData.push(obj.actual);
-      }
-      if (actualData.length > maxLen) {
-        actualData.shift();
-      }
-      if (obj.noSensor) {
-        nosensorData.push(obj.noSensor);
-      }
-      if (nosensorData.length > maxLen) {
-        nosensorData.shift();
-      }
+          myLineChart.update();
+      } else if(obj.deviceid === 'tutorial_room_heated') {
+          counter1 = counter1+1;
+          timeData1.push(counter*0.25);
+          temperatureData1.push(obj.OTtemperature);
+          var len = timeData1.length;
+          if (len > maxLen) {
+            timeData1.shift();
+            temperatureData1.shift();
+            actualData1.shift();
+            nosensorData1.shift();
+          }
 
-      ///for heating
-      //  if (obj.actualH) {
-      //   actualDataH.push(obj.actualH);
-      // }
-      // if (actualDataH.length > maxLen) {
-      //   actualDataH.shift();
-      // }
-      // if (obj.noSensorH) {
-      //   nosensorDataH.push(obj.noSensorH);
-      // }
-      // if (nosensorDataH.length > maxLen) {
-      //   nosensorDataH.shift();
-      // }
-
-      myLineChart.update();
-      myLineChart1.update();
-
+          if (obj.actual) {
+            actualData1.push(obj.actual);
+          }
+          if (actualData1.length > maxLen) {
+            actualData1.shift();
+          }
+          if (obj.noSensor) {
+            nosensorData1.push(obj.noSensor);
+          }
+          if (nosensorData1.length > maxLen) {
+            nosensorData1.shift();
+          }     
+          myLineChart1.update();           
+      }
     } catch (err) {
       console.error(err);
     }
