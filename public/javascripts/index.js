@@ -205,11 +205,17 @@ var basicOption1 = {
     }
 
     if(type === "COOLING"){
-      cost = dictionary.get(coolingCapacity,Math.round(temperature));
+      if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined"){
+        cost = 0;
+      } else {
+        cost = cost+dictionary.get(coolingCapacity,Math.round(temperature));
     } 
     if(type === "HEATING"){
-      cost = dictionary.get(coolingCapacity,Math.round(temperature));
-    }  
+     if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined"){
+        cost = 0;
+      } else {
+        cost = cost+dictionary.get(coolingCapacity,Math.round(temperature));
+    } 
 
     return cost;
   }
@@ -268,8 +274,8 @@ var basicOption1 = {
           }        
 
           myLineChart.update();
-          document.getElementById("coolingActualCost").innerHTML = getCost(obj.roomsize, obj.actual, "COOLING");
-          document.getElementById("coolingNoSensorCost").innerHTML = getCost(obj.roomsize, obj.actual, "COOLING");  
+          document.getElementById("coolingActualCost").innerHTML = " $"+getCost(obj.roomsize, obj.actual, "COOLING");
+          document.getElementById("coolingNoSensorCost").innerHTML = " $"+getCost(obj.roomsize, obj.actual, "COOLING");  
 
           console.log('Costing'+getCost(obj.roomsize, obj.actual, "COOLING"));
       } else if(obj.deviceid === 'room_heated') {
@@ -297,8 +303,8 @@ var basicOption1 = {
             nosensorData1.shift();
           }     
           myLineChart1.update();
-          document.getElementById("heatingActualCost").innerHTML = getCost(obj.roomsize, obj.actual,"COOLING");
-          document.getElementById("heatingNoSensorCost").innerHTML = getCost(obj.roomsize, obj.noSensor,"COOLING");           
+          document.getElementById("heatingActualCost").innerHTML = " $"+getCost(obj.roomsize, obj.actual,"COOLING");
+          document.getElementById("heatingNoSensorCost").innerHTML = " $"+getCost(obj.roomsize, obj.noSensor,"COOLING");           
       }
     } catch (err) {
       console.error(err);
