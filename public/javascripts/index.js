@@ -8,6 +8,7 @@ $(document).ready(function () {
   var temperatureData1 = [];
   var actualData1 = [];
   var nosensorData1 = [];
+  var cost;
 
   var counter = 1;
   var counter1 = 1;
