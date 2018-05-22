@@ -9,6 +9,8 @@ $(document).ready(function () {
   var actualData1 = [];
   var nosensorData1 = [];
   var cost;
+  var costResultActual =0;
+  var costResultNoSensor =0;
 
   var counter = 1;
   var counter1 = 1;
@@ -205,22 +207,14 @@ var basicOption1 = {
     }
 
     if(type === "COOLING"){
-      if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined")){
-        cost = 0;
-      } else {
-        cost = cost+dictionary.get(coolingCapacity,Math.round(temperature));
-    }
-
-    if(type === "HEATING"){
-     if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined")){
-        cost = 0;
-      } else {
-        cost = cost+dictionary.get(coolingCapacity,Math.round(temperature));
+      cost = dictionary.get(coolingCapacity,Math.round(temperature));
     } 
+    if(type === "HEATING"){
+      cost = dictionary.get(coolingCapacity,Math.round(temperature));
+    }  
 
     return cost;
   }
-
 
   //Get the context of the canvas element we want to select
   var ctx = document.getElementById("myChart");
@@ -276,8 +270,16 @@ var basicOption1 = {
           }        
 
           myLineChart.update();
-          document.getElementById("coolingActualCost").innerHTML = " $"+getCost(obj.roomsize, obj.actual, "COOLING");
-          document.getElementById("coolingNoSensorCost").innerHTML = " $"+getCost(obj.roomsize, obj.actual, "COOLING");  
+          if ((obj.actual === obj.noSensor) && (obj.noSensor == obj.temperature)){
+            document.getElementById("coolingActualCost").innerHTML = costResultActual;
+            document.getElementById("coolingNoSensorCost").innerHTML = costResultNoSensor; 
+          } else {
+            costResultActual = costResultActual+getCost(obj.roomsize, obj.actual, "COOLING");
+            costResultNoSensor = costResultNoSensor+getCost(obj.roomsize, obj.noSensor, "COOLING");
+             document.getElementById("coolingActualCost").innerHTML = " $"+costResultActual;
+             document.getElementById("coolingNoSensorCost").innerHTML = " $"+costResultNoSensor; 
+          }
+         
 
           console.log('Costing'+getCost(obj.roomsize, obj.actual, "COOLING"));
       } else if(obj.deviceid === 'room_heated') {
@@ -305,11 +307,11 @@ var basicOption1 = {
             nosensorData1.shift();
           }     
           myLineChart1.update();
-          document.getElementById("heatingActualCost").innerHTML = " $"+getCost(obj.roomsize, obj.actual,"COOLING");
-          document.getElementById("heatingNoSensorCost").innerHTML = " $"+getCost(obj.roomsize, obj.noSensor,"COOLING");           
+          document.getElementById("heatingActualCost").innerHTML = getCost(obj.roomsize, obj.actual,"COOLING");
+          document.getElementById("heatingNoSensorCost").innerHTML = getCost(obj.roomsize, obj.noSensor,"COOLING");           
       }
     } catch (err) {
       console.error(err);
     }
-  };
-
+  }
+});
