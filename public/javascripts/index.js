@@ -215,7 +215,7 @@ var basicOption1 = {
 
     } 
     if(type === "HEATING"){
-      cost = dictionary.get(coolingCapacity,Math.round(temperature));
+      cost = dictionary.get(heatingCapacity,Math.round(temperature));
       if (cost == undefined){
         console.log("here!!!!!")
         cost = 0;
@@ -228,6 +228,8 @@ var basicOption1 = {
   //Get the context of the canvas element we want to select
   var costResultActual =0;
   var costResultNoSensor =0;
+  var costResultActual1 =0;
+  var costResultNoSensor1 =0;
   var ctx = document.getElementById("myChart");
   var ctx1 = document.getElementById("myChart1");
   var optionsNoAnimation = { animation: false }
@@ -281,7 +283,7 @@ var basicOption1 = {
           }        
 
           myLineChart.update();
-          if ((obj.actual == obj.noSensor) && (obj.noSensor == obj.temperature) && (obj.actual == obj.temperature)){
+          if ((obj.actual == obj.noSensor) && (obj.noSensor == obj.OTtemperature) && (obj.actual == obj.OTtemperature)){
             costResultActual = costResultActual;
             costResultNoSensor = costResultNoSensor;
 
@@ -290,6 +292,7 @@ var basicOption1 = {
 
             document.getElementById("coolingActualCost").innerHTML = costResultActual.toFixed(2);
             document.getElementById("coolingNoSensorCost").innerHTML = costResultNoSensor.toFixed(2); 
+            document.getElementById("coolingMoneySaved").innerHTML = (costResultNoSensor.toFixed(2)-costResultActual.toFixed(2)); 
           } else {
             costResultActual = costResultActual+getCost(obj.roomsize, obj.actual, "COOLING");
             costResultNoSensor = costResultNoSensor+getCost(obj.roomsize, obj.noSensor, "COOLING");
@@ -325,8 +328,23 @@ var basicOption1 = {
             nosensorData1.shift();
           }     
           myLineChart1.update();
-          document.getElementById("heatingActualCost").innerHTML = getCost(obj.roomsize, obj.actual,"COOLING");
-          document.getElementById("heatingNoSensorCost").innerHTML = getCost(obj.roomsize, obj.noSensor,"COOLING");           
+           if ((obj.actual == obj.noSensor) && (obj.noSensor == obj.OTtemperature) && (obj.actual == obj.OTtemperature)){
+            costResultActual1 = costResultActual1;
+            costResultNoSensor1 = costResultNoSensor1;
+
+            console.log("acutal Equal "+costResultActual1+" noSensor Equal"+costResultNoSensor1);
+
+
+            document.getElementById("coolingActualCost").innerHTML = costResultActual1.toFixed(2);
+            document.getElementById("coolingNoSensorCost").innerHTML = costResultNoSensor1.toFixed(2); 
+          } else {
+            costResultActual = costResultActual1+getCost(obj.roomsize, obj.actual, "HEATING");
+            costResultNoSensor = costResultNoSensor1+getCost(obj.roomsize, obj.noSensor, "HEATING");
+             document.getElementById("heatingingActualCost").innerHTML = " $"+costResultActual1.toFixed(2);
+             document.getElementById("heatingingNoSensorCost").innerHTML = " $"+costResultNoSensor1.toFixed(2); 
+
+          }
+         console.log("acutal "+costResultActual1+" noSensor "+costResultNoSensor1);          
       }
     } catch (err) {
       console.error(err);
