@@ -9,7 +9,8 @@ $(document).ready(function () {
   var actualData1 = [];
   var nosensorData1 = [];
   var cost;
-
+  var coolingCapacity;
+  var heatingCapacity;
 
   var counter = 1;
   var counter1 = 1;
