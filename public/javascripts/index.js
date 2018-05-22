@@ -12,6 +12,64 @@ $(document).ready(function () {
   var counter = 1;
   var counter1 = 1;
 
+  var dictionary = {
+    storage: {},
+    get: function (a, b){
+        if (a > b) {
+            let x = b;
+            b = a;
+            a = x;
+        }
+        return this.storage[a][b];
+    },
+    put: function (a, b, value){
+        if (a > b){
+            let x = b;
+            b = a;
+            a = x;
+        }
+        if (typeof this.storage[a] !== "object")
+            this.storage[a] = {};
+        this.storage[a][b] = value;
+    }
+}
+
+dictionary.put("2.5","21",0.16/4);
+dictionary.put("2.5","22",0.14/4);
+dictionary.put("2.5","23",0.13/4);
+dictionary.put("2.5","24",0.12/4);
+dictionary.put("2.5","25",0.11/4);
+dictionary.put("2.5","26",0.10/4);
+
+dictionary.put("3.5","21",0.26/4);
+dictionary.put("3.5","22",0.24/4);
+dictionary.put("3.5","23",0.21/4);
+dictionary.put("3.5","24",0.19/4);
+dictionary.put("3.5","25",0.18/4);
+dictionary.put("3.5","26",0.17/4);
+
+dictionary.put("4.3","21",0.40/4);
+dictionary.put("4.3","22",0.37/4);
+dictionary.put("4.3","23",0.33/4);
+dictionary.put("4.3","24",0.30/4);
+dictionary.put("4.3","25",0.25/4);
+dictionary.put("4.3","26",0.22/4);
+
+dictionary.put("8","21",0.66/4);
+dictionary.put("8","22",0.61/4);
+dictionary.put("8","23",0.53/4);
+dictionary.put("8","24",0.49/4);
+dictionary.put("8","25",0.46/4);
+dictionary.put("8","26",0.43/4);
+
+dictionary.put("10","21",0.87/4);
+dictionary.put("10","22",0.80/4);
+dictionary.put("10","23",0.70/4);
+dictionary.put("10","24",0.65/4);
+dictionary.put("10","25",0.52/4);
+dictionary.put("10","25",0.52/4);
+
+
   var data = {
     labels: timeData,
     datasets: [
@@ -128,6 +186,33 @@ var basicOption1 = {
     }
   }
 
+
+  function getCost(roomSize, temperature, type){
+    switch(roomSize){
+      case 9:
+        coolingCapacity = 2.5;
+        heatingCapacity = 3.5;
+        break;
+      case 25:
+        coolingCapacity = 3.5;
+        heatingCapacity = 4.3;
+        break;
+      case 55:
+        coolingCapacity = 8;
+        heatingCapacity = 10;
+        break;  
+    }
+
+    if(type === 'COOLING'){
+      cost = dictionary.get(coolingCapacity,int(temperature));
+    } 
+    if(type === 'HEATING'){
+      cost = dictionary.get(coolingCapacity,int(temperature));
+    }  
+
+    return cost;
+  }
+
   //Get the context of the canvas element we want to select
   var ctx = document.getElementById("myChart");
   var ctx1 = document.getElementById("myChart1");
@@ -157,7 +242,7 @@ var basicOption1 = {
       // only keep no more than 50 points in the line chart
       const maxLen = 50000;
       
-      if(obj.deviceid === 'tutorial_room'){
+      if(obj.deviceid === 'room_cooled'){
           counter = counter+1;
           timeData.push(counter*0.25);
           temperatureData.push(obj.OTtemperature);
@@ -182,7 +267,9 @@ var basicOption1 = {
           }        
 
           myLineChart.update();
-      } else if(obj.deviceid === 'tutorial_room_heated') {
+          document.getElementById("coolingActualCost").innerHTML = getCost(obj.roomSize, obj.actual);
+          document.getElementById("coolingNoSensorCost").innerHTML = getCost(obj.roomSize, obj.noSensor);  
+      } else if(obj.deviceid === 'room_heated') {
           counter1 = counter1+1;
           timeData1.push(counter*0.25);
           temperatureData1.push(obj.OTtemperature);
@@ -206,7 +293,9 @@ var basicOption1 = {
           if (nosensorData1.length > maxLen) {
             nosensorData1.shift();
           }     
-          myLineChart1.update();           
+          myLineChart1.update();
+          document.getElementById("heatingActualCost").innerHTML = getCost(obj.roomSize, obj.actual);
+          document.getElementById("heatingNoSensorCost").innerHTML = getCost(obj.roomSize, obj.noSensor);           
       }
     } catch (err) {
       console.error(err);
