@@ -134,13 +134,13 @@ var data1 = {
     console.log('receive message' + message.data);
     try {
       var obj = JSON.parse(message.data);
-      var obj1 = JSON.parse(message.data1);
+      var obj1 = JSON.parse(message.data);
       if(!obj.time || !obj.OTtemperature) {
         return;
       }
-      // if(!obj1.time || !obj1.OTtemperatureH) {
-      //   return;
-      // }
+      if(!obj1.time || !obj1.OTtemperatureH) {
+        return;
+      }
 
       timeData.push(counter*0.25);
       counter = counter+1;
