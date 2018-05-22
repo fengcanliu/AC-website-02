@@ -157,7 +157,7 @@ var basicOption1 = {
       // only keep no more than 50 points in the line chart
       const maxLen = 50000;
       
-      if(obj.deviceid === 'tutorial_room'){
+      if(obj.deviceid === 'room_cooled'){
           counter = counter+1;
           timeData.push(counter*0.25);
           temperatureData.push(obj.OTtemperature);
@@ -182,7 +182,7 @@ var basicOption1 = {
           }        
 
           myLineChart.update();
-      } else if(obj.deviceid === 'tutorial_room_heated') {
+      } else if(obj.deviceid === 'room_heated') {
           counter1 = counter1+1;
           timeData1.push(counter*0.25);
           temperatureData1.push(obj.OTtemperature);
