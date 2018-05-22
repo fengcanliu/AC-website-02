@@ -70,7 +70,7 @@ dictionary.put("10","22",0.80/4);
 dictionary.put("10","23",0.70/4);
 dictionary.put("10","24",0.65/4);
 dictionary.put("10","25",0.52/4);
-dictionary.put("10","25",0.52/4);
+dictionary.put("10","26",0.52/4);
 
 
   var data = {
@@ -271,6 +271,9 @@ var basicOption1 = {
 
           myLineChart.update();
           if ((obj.actual === obj.noSensor) && (obj.noSensor === obj.temperature) && (obj.actual === obj.temperature)){
+            costResultActual = costResultActual;
+            costResultNoSensor = costResultNoSensor;
+            console.log("acutal "+costResultActual+" noSensor "+costResultNoSensor);
             document.getElementById("coolingActualCost").innerHTML = costResultActual.toFixed(2);
             document.getElementById("coolingNoSensorCost").innerHTML = costResultNoSensor.toFixed(2); 
           } else {
