@@ -124,7 +124,7 @@ var data1 = {
   });
   var myLineChart1 = new Chart(ctx1, {
     type: 'line',
-    data: data1,
+    data: data,
     options: basicOption
   });
 
@@ -139,16 +139,16 @@ var data1 = {
       if(!obj.time || !obj.OTtemperature) {
         return;
       }
-      if(!obj.time || !obj.OTtemperatureH) {
-        return;
-      }
+      // if(!obj.time || !obj.OTtemperatureH) {
+      //   return;
+      // }
 
       timeData.push(counter*0.25);
-      timeDataH.push(counterH*0.25);
+      // timeDataH.push(counterH*0.25);
       counter = counter+1;
-      counterH = counterH+1;
+      // counterH = counterH+1;
       temperatureData.push(obj.OTtemperature);
-      temperatureDataH.push(obj.OTtemperatureH);
+      // temperatureDataH.push(obj.OTtemperatureH);
       // only keep no more than 50 points in the line chart
       const maxLen = 50000;
       var len = timeData.length;
@@ -157,9 +157,9 @@ var data1 = {
         temperatureData.shift();
         actualData.shift();
         nosensorData.shift();
-        temperatureDataH.shift();
-        actualDataH.shift();
-        nosensorDataH.shift();
+        // temperatureDataH.shift();
+        // actualDataH.shift();
+        // nosensorDataH.shift();
       }
 
       if (obj.actual) {
@@ -176,18 +176,18 @@ var data1 = {
       }
 
       ///for heating
-       if (obj.actualH) {
-        actualDataH.push(obj.actualH);
-      }
-      if (actualDataH.length > maxLen) {
-        actualDataH.shift();
-      }
-      if (obj.noSensorH) {
-        nosensorDataH.push(obj.noSensorH);
-      }
-      if (nosensorDataH.length > maxLen) {
-        nosensorDataH.shift();
-      }
+      //  if (obj.actualH) {
+      //   actualDataH.push(obj.actualH);
+      // }
+      // if (actualDataH.length > maxLen) {
+      //   actualDataH.shift();
+      // }
+      // if (obj.noSensorH) {
+      //   nosensorDataH.push(obj.noSensorH);
+      // }
+      // if (nosensorDataH.length > maxLen) {
+      //   nosensorDataH.shift();
+      // }
 
       myLineChart.update();
       myLineChart1.update();
