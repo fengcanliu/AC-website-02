@@ -208,6 +208,8 @@ var basicOption1 = {
 
     if(type === "COOLING"){
 
+      console.log("coolingCapacity "+coolingCapacity);
+
       if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined")){
         cost = 0;
       } else {
