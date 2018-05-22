@@ -214,6 +214,7 @@ var basicOption1 = {
 
     } 
     if(type === "HEATING"){
+      console.log("+++++++Temp is "+temperature);
       cost = dictionary.get(heatingCapacity,Math.round(temperature));
       if (cost == undefined){
         console.log("here!!!!!")
