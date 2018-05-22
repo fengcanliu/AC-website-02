@@ -23,7 +23,7 @@ $(document).ready(function () {
             a = x;
         }
         console.log("+++++++++++a is "+a+"b is "+b);
-        return this.storage[a][b];
+        return dictionary.storage[a][b];
     },
     put: function (a, b, value){
         if (a > b){
