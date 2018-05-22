@@ -271,7 +271,7 @@ var basicOption1 = {
           document.getElementById("coolingActualCost").innerHTML = 1;
           document.getElementById("coolingNoSensorCost").innerHTML = 1;  
 
-          console.log('Costing'+getCost(obj.roomsize, obj.actual));
+          console.log('Costing'+getCost(obj.roomsize, obj.actual, "COOLING"));
       } else if(obj.deviceid === 'room_heated') {
           counter1 = counter1+1;
           timeData1.push(counter*0.25);
