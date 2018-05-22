@@ -294,8 +294,8 @@ var basicOption1 = {
             nosensorData1.shift();
           }     
           myLineChart1.update();
-          document.getElementById("heatingActualCost").innerHTML = getCost(obj.roomSize, obj.actual);
-          document.getElementById("heatingNoSensorCost").innerHTML = getCost(obj.roomSize, obj.noSensor);           
+          document.getElementById("heatingActualCost").innerHTML = getCost(obj.roomsize, obj.actual);
+          document.getElementById("heatingNoSensorCost").innerHTML = getCost(obj.roomsize, obj.noSensor);           
       }
     } catch (err) {
       console.error(err);
