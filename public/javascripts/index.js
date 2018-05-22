@@ -205,10 +205,10 @@ var basicOption1 = {
     }
 
     if(type === "COOLING"){
-      cost = dictionary.get(coolingCapacity,int(temperature));
+      cost = dictionary.get(coolingCapacity,Math.round(temperature));
     } 
     if(type === "HEATING"){
-      cost = dictionary.get(coolingCapacity,int(temperature));
+      cost = dictionary.get(coolingCapacity,Math.round(temperature));
     }  
 
     return cost;
@@ -268,8 +268,8 @@ var basicOption1 = {
           }        
 
           myLineChart.update();
-          document.getElementById("coolingActualCost").innerHTML = 1;
-          document.getElementById("coolingNoSensorCost").innerHTML = 1;  
+          document.getElementById("coolingActualCost").innerHTML = getCost(obj.roomsize, obj.actual, "COOLING");
+          document.getElementById("coolingNoSensorCost").innerHTML = getCost(obj.roomsize, obj.actual, "COOLING");  
 
           console.log('Costing'+getCost(obj.roomsize, obj.actual, "COOLING"));
       } else if(obj.deviceid === 'room_heated') {
