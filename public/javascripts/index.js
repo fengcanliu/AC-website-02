@@ -10,6 +10,7 @@ $(document).ready(function () {
   var nosensorData1 = [];
   var cost;
 
+  var data;
 
   var counter = 1;
   var counter1 = 1;
@@ -23,7 +24,8 @@ $(document).ready(function () {
             a = x;
         }
         console.log("+++++++++++a is "+a+"b is "+b);
-        return dictionary[a][b];
+        data = this.storage[a][b];
+        return data;
     },
     put: function (a, b, value){
         if (a > b){
@@ -32,8 +34,8 @@ $(document).ready(function () {
             a = x;
         }
         if (typeof this.storage[a] !== "object")
-            dictionary[a] = {};
-        dictionary[a][b] = value;
+            this.storage[a] = {};
+        this.storage[a][b] = value;
     }
 }
 
@@ -216,7 +218,7 @@ var basicOption1 = {
     } 
     if(type === "HEATING"){
       console.log("+++++++Temp is "+temperature);
-      cost = dictionary.get(heatingCapacity,Math.round(temperature));
+      cost = dictionary.get(heatCapacity,Math.round(temperature));
       if (cost == undefined){
         console.log("here!!!!!")
         cost = 0;
