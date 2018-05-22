@@ -28,11 +28,11 @@ $(document).ready(function () {
         return data;
     },
     put: function (a, b, value){
-        if (a > b){
-            let x = b;
-            b = a;
-            a = x;
-        }
+        // if (a > b){
+        //     let x = b;
+        //     b = a;
+        //     a = x;
+        // }
         if (typeof this.storage[a] !== "object")
             this.storage[a] = {};
         this.storage[a][b] = value;
