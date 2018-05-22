@@ -380,9 +380,9 @@ var basicOption1 = {
              document.getElementById("heatingActualCost").innerHTML = " $"+costResultActual1.toFixed(2);
              document.getElementById("heatingNoSensorCost").innerHTML = " $"+costResultNoSensor1.toFixed(2); 
              document.getElementById("heatingMoneySaved").innerHTML = " $"+(costResultNoSensor1.toFixed(2)-costResultActual1.toFixed(2)).toFixed(2); 
-
+             console.log("acutal "+getCost(obj.roomsize, obj.actual, "HEATING")+" noSensor "+getCost(obj.roomsize, obj.noSensor, "HEATING");   
           }
-          console.log("acutal "+costResultActual1+" noSensor "+costResultNoSensor1);          
+                 
       }
     } catch (err) {
       console.error(err);
