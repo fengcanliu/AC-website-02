@@ -206,11 +206,18 @@ var basicOption1 = {
     }
 
     if(type === "COOLING"){
-      
+
       cost = dictionary.get(coolingCapacity,Math.round(temperature));
+      if (cost == "undefined"){
+        cost = 0;
+      } 
+
     } 
     if(type === "HEATING"){
       cost = dictionary.get(coolingCapacity,Math.round(temperature));
+      if (cost == "undefined"){
+        cost = 0;
+      } 
     }  
 
     return cost;
