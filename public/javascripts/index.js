@@ -206,7 +206,6 @@ var basicOption1 = {
     }
 
     if(type === "COOLING"){
-
       cost = dictionary.get(coolingCapacity,Math.round(temperature));
       if (cost == undefined){
         console.log("here!!!!!")
@@ -292,13 +291,13 @@ var basicOption1 = {
 
             document.getElementById("coolingActualCost").innerHTML = " $"+costResultActual.toFixed(2);
             document.getElementById("coolingNoSensorCost").innerHTML = " $"+costResultNoSensor.toFixed(2); 
-            document.getElementById("coolingMoneySaved").innerHTML = " $"+(costResultNoSensor.toFixed(2)-costResultActual.toFixed(2)); 
+            document.getElementById("coolingMoneySaved").innerHTML = " $"+(costResultNoSensor.toFixed(2)-costResultActual.toFixed(2)).toFixed(2); 
           } else {
             costResultActual = costResultActual+getCost(obj.roomsize, obj.actual, "COOLING");
             costResultNoSensor = costResultNoSensor+getCost(obj.roomsize, obj.noSensor, "COOLING");
              document.getElementById("coolingActualCost").innerHTML = " $"+costResultActual.toFixed(2);
              document.getElementById("coolingNoSensorCost").innerHTML = " $"+costResultNoSensor.toFixed(2); 
-             document.getElementById("coolingMoneySaved").innerHTML = " $"+(costResultNoSensor.toFixed(2)-costResultActual.toFixed(2)); 
+             document.getElementById("coolingMoneySaved").innerHTML = " $"+(costResultNoSensor.toFixed(2)-costResultActual.toFixed(2)).toFixed(2); 
 
           }
          console.log("acutal "+costResultActual+" noSensor "+costResultNoSensor);
@@ -338,13 +337,13 @@ var basicOption1 = {
 
             document.getElementById("heatingActualCost").innerHTML = " $"+costResultActual1.toFixed(2);
             document.getElementById("heatingNoSensorCost").innerHTML = " $"+costResultNoSensor1.toFixed(2); 
-            document.getElementById("heatingMoneySaved").innerHTML = " $"+(costResultNoSensor1.toFixed(2)-costResultActual1.toFixed(2)); 
+            document.getElementById("heatingMoneySaved").innerHTML = " $"+(costResultNoSensor1.toFixed(2)-costResultActual1.toFixed(2)).toFixed(2); 
           } else {
-            costResultActual = costResultActual1+getCost(obj.roomsize, obj.actual, "HEATING");
-            costResultNoSensor = costResultNoSensor1+getCost(obj.roomsize, obj.noSensor, "HEATING");
+            costResultActual1 = costResultActual1+getCost(obj.roomsize, obj.actual, "HEATING");
+            costResultNoSensor1 = costResultNoSensor1+getCost(obj.roomsize, obj.noSensor, "HEATING");
              document.getElementById("heatingingActualCost").innerHTML = " $"+costResultActual1.toFixed(2);
              document.getElementById("heatingingNoSensorCost").innerHTML = " $"+costResultNoSensor1.toFixed(2); 
-             document.getElementById("heatingMoneySaved").innerHTML = " $"+(costResultNoSensor1.toFixed(2)-costResultActual1.toFixed(2)); 
+             document.getElementById("heatingMoneySaved").innerHTML = " $"+(costResultNoSensor1.toFixed(2)-costResultActual1.toFixed(2)).toFixed(2); 
 
           }
          console.log("acutal "+costResultActual1+" noSensor "+costResultNoSensor1);          
