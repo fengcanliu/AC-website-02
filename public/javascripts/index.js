@@ -270,14 +270,14 @@ var basicOption1 = {
           }        
 
           myLineChart.update();
-          if ((obj.actual === obj.noSensor) && (obj.noSensor == obj.temperature)){
-            document.getElementById("coolingActualCost").innerHTML = costResultActual;
-            document.getElementById("coolingNoSensorCost").innerHTML = costResultNoSensor; 
+          if ((obj.actual === obj.noSensor) && (obj.noSensor === obj.temperature) && (obj.actual === obj.temperature)){
+            document.getElementById("coolingActualCost").innerHTML = costResultActual.toFixed(2);
+            document.getElementById("coolingNoSensorCost").innerHTML = costResultNoSensor.toFixed(2); 
           } else {
             costResultActual = costResultActual+getCost(obj.roomsize, obj.actual, "COOLING");
             costResultNoSensor = costResultNoSensor+getCost(obj.roomsize, obj.noSensor, "COOLING");
-             document.getElementById("coolingActualCost").innerHTML = " $"+costResultActual;
-             document.getElementById("coolingNoSensorCost").innerHTML = " $"+costResultNoSensor; 
+             document.getElementById("coolingActualCost").innerHTML = " $"+costResultActual.toFixed(2);
+             document.getElementById("coolingNoSensorCost").innerHTML = " $"+costResultNoSensor.toFixed(2); 
           }
          
 
