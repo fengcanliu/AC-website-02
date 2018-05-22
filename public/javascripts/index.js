@@ -1,5 +1,6 @@
 $(document).ready(function () {
   var timeData = [];
+  var timeDataH = [];
   var temperatureData = [];
   var actualData = [];
   var nosensorData = [];
@@ -7,6 +8,7 @@ $(document).ready(function () {
   var actualDataH = [];
   var nosensorDataH = [];
   var counter = 1;
+  var counterH = 1;
   var data = {
     labels: timeData,
     datasets: [
@@ -134,18 +136,19 @@ var data1 = {
     console.log('receive message' + message.data);
     try {
       var obj = JSON.parse(message.data);
-      var obj1 = JSON.parse(message.data);
       if(!obj.time || !obj.OTtemperature) {
         return;
       }
-      if(!obj1.time || !obj1.OTtemperatureH) {
+      if(!obj.time || !obj.OTtemperatureH) {
         return;
       }
 
       timeData.push(counter*0.25);
+      timeDataH.push(counterH*0.25);
       counter = counter+1;
+      counterH = counterH+1;
       temperatureData.push(obj.OTtemperature);
-      temperatureDataH.push(obj1.OTtemperatureH);
+      temperatureDataH.push(obj.OTtemperatureH);
       // only keep no more than 50 points in the line chart
       const maxLen = 50000;
       var len = timeData.length;
@@ -173,14 +176,14 @@ var data1 = {
       }
 
       ///for heating
-       if (obj1.actualH) {
-        actualDataH.push(obj1.actualH);
+       if (obj.actualH) {
+        actualDataH.push(obj.actualH);
       }
       if (actualDataH.length > maxLen) {
         actualDataH.shift();
       }
-      if (obj1.noSensorH) {
-        nosensorDataH.push(obj1.noSensorH);
+      if (obj.noSensorH) {
+        nosensorDataH.push(obj.noSensorH);
       }
       if (nosensorDataH.length > maxLen) {
         nosensorDataH.shift();
