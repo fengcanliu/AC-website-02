@@ -273,7 +273,7 @@ var basicOption1 = {
           if ((obj.actual === obj.noSensor) && (obj.noSensor === obj.temperature) && (obj.actual === obj.temperature)){
             costResultActual = costResultActual;
             costResultNoSensor = costResultNoSensor;
-            
+
             document.getElementById("coolingActualCost").innerHTML = costResultActual.toFixed(2);
             document.getElementById("coolingNoSensorCost").innerHTML = costResultNoSensor.toFixed(2); 
           } else {
@@ -281,8 +281,9 @@ var basicOption1 = {
             costResultNoSensor = costResultNoSensor+getCost(obj.roomsize, obj.noSensor, "COOLING");
              document.getElementById("coolingActualCost").innerHTML = " $"+costResultActual.toFixed(2);
              document.getElementById("coolingNoSensorCost").innerHTML = " $"+costResultNoSensor.toFixed(2); 
+             
           }
-         
+         console.log("acutal "+costResultActual+" noSensor "+costResultNoSensor);
 
           console.log('Costing'+getCost(obj.roomsize, obj.actual, "COOLING"));
       } else if(obj.deviceid === 'room_heated') {
