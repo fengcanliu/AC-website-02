@@ -138,7 +138,7 @@ var basicOption1 = {
   });
   var myLineChart1 = new Chart(ctx1, {
     type: 'line',
-    data1: data1,
+    data: data1,
     options: basicOption1
   });
 
