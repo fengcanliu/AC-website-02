@@ -185,7 +185,31 @@ var basicOption1 = {
     } 
     if(type === "HEATING"){
       // console.log("+++++++Temp is "+temperature);
-      cost = dictionary.get(heatingCapacity,Math.round(temperature));
+      switch(temperature){
+        case 21:
+          cost = dictionary.get(heatingCapacity,Math.round(27));
+          break;
+        case 22:
+          cost = dictionary.get(heatingCapacity,Math.round(26));
+          break;
+        case 23:
+          cost = dictionary.get(heatingCapacity,Math.round(25));
+          break;
+        case 24:
+          cost = dictionary.get(heatingCapacity,Math.round(24));
+          break;
+        case 25:
+          cost = dictionary.get(heatingCapacity,Math.round(23));
+          break;
+        case 26:
+          cost = dictionary.get(heatingCapacity,Math.round(22));
+          break;
+        case 27:
+          cost = dictionary.get(heatingCapacity,Math.round(21));
+          break;          
+      }
+
+
       if (cost == undefined){
         // console.log("here!!!!!")
         cost = 0;
@@ -224,6 +248,7 @@ var basicOption1 = {
     dictionary.put('2.5','24',0.12/4);
     dictionary.put('2.5','25',0.11/4);
     dictionary.put('2.5','26',0.10/4);
+    dictionary.put('2.5','27',0.09/4);
 
     dictionary.put('3.5','21',0.26/4);
     dictionary.put('3.5','22',0.24/4);
@@ -231,6 +256,7 @@ var basicOption1 = {
     dictionary.put('3.5','24',0.19/4);
     dictionary.put('3.5','25',0.18/4);
     dictionary.put('3.5','26',0.17/4);
+    dictionary.put('3.5','27',0.15/4);
 
     dictionary.put('4.3','21',0.40/4);
     dictionary.put('4.3','22',0.37/4);
@@ -238,6 +264,7 @@ var basicOption1 = {
     dictionary.put('4.3','24',0.30/4);
     dictionary.put('4.3','25',0.25/4);
     dictionary.put('4.3','26',0.22/4);
+    dictionary.put('4.3','27',0.19/4);
 
     dictionary.put('8','21',0.66/4);
     dictionary.put('8','22',0.61/4);
@@ -245,13 +272,15 @@ var basicOption1 = {
     dictionary.put('8','24',0.49/4);
     dictionary.put('8','25',0.46/4);
     dictionary.put('8','26',0.43/4);
+    dictionary.put('8','27',0.40/4);
 
     dictionary.put('10','21',0.87/4);
     dictionary.put('10','22',0.80/4);
     dictionary.put('10','23',0.70/4);
     dictionary.put('10','24',0.65/4);
     dictionary.put('10','25',0.52/4);
-    dictionary.put('10','26',0.52/4);
+    dictionary.put('10','26',0.47/4);
+    dictionary.put('10','27',0.40/4);
 
   }
   ws.onmessage = function (message) {
@@ -348,8 +377,8 @@ var basicOption1 = {
           } else {
             costResultActual1 = costResultActual1+getCost(obj.roomsize, obj.actual, "HEATING");
             costResultNoSensor1 = costResultNoSensor1+getCost(obj.roomsize, obj.noSensor, "HEATING");
-             document.getElementById("heatingingActualCost").innerHTML = " $"+costResultActual1.toFixed(2);
-             document.getElementById("heatingingNoSensorCost").innerHTML = " $"+costResultNoSensor1.toFixed(2); 
+             document.getElementById("heatingActualCost").innerHTML = " $"+costResultActual1.toFixed(2);
+             document.getElementById("heatingNoSensorCost").innerHTML = " $"+costResultNoSensor1.toFixed(2); 
              document.getElementById("heatingMoneySaved").innerHTML = " $"+(costResultNoSensor1.toFixed(2)-costResultActual1.toFixed(2)).toFixed(2); 
 
           }
