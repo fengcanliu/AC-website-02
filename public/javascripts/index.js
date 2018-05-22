@@ -36,6 +36,7 @@ $(document).ready(function () {
         if (typeof this.storage[a] !== "object")
             this.storage[a] = {};
         this.storage[a][b] = value;
+        console.log("++++++saving ["+a+"] and ["+b+"]");
     }
 }
 
