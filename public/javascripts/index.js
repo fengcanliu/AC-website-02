@@ -22,6 +22,7 @@ $(document).ready(function () {
             b = a;
             a = x;
         }
+        console.log("+++++++++++a is "+a+"b is "+b);
         return this.storage[a][b];
     },
     put: function (a, b, value){
