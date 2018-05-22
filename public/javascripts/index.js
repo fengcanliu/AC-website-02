@@ -9,8 +9,7 @@ $(document).ready(function () {
   var actualData1 = [];
   var nosensorData1 = [];
   var cost;
-  var costResultActual =0;
-  var costResultNoSensor =0;
+
 
   var counter = 1;
   var counter1 = 1;
@@ -207,16 +206,27 @@ var basicOption1 = {
     }
 
     if(type === "COOLING"){
-      cost = dictionary.get(coolingCapacity,Math.round(temperature));
+
+      if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined")){
+        cost = 0;
+      } else {
+        cost = dictionary.get(coolingCapacity,Math.round(temperature));
+      }
     } 
     if(type === "HEATING"){
-      cost = dictionary.get(coolingCapacity,Math.round(temperature));
+       if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined")){
+        cost = 0;
+      } else {
+        cost = dictionary.get(coolingCapacity,Math.round(temperature));
+      } 
     }  
 
     return cost;
   }
 
   //Get the context of the canvas element we want to select
+  var costResultActual =0;
+  var costResultNoSensor =0;
   var ctx = document.getElementById("myChart");
   var ctx1 = document.getElementById("myChart1");
   var optionsNoAnimation = { animation: false }
@@ -281,7 +291,7 @@ var basicOption1 = {
             costResultNoSensor = costResultNoSensor+getCost(obj.roomsize, obj.noSensor, "COOLING");
              document.getElementById("coolingActualCost").innerHTML = " $"+costResultActual.toFixed(2);
              document.getElementById("coolingNoSensorCost").innerHTML = " $"+costResultNoSensor.toFixed(2); 
-             
+
           }
          console.log("acutal "+costResultActual+" noSensor "+costResultNoSensor);
 
