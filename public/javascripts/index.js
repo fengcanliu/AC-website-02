@@ -311,5 +311,5 @@ var basicOption1 = {
     } catch (err) {
       console.error(err);
     }
-  }
-};
+  };
+
