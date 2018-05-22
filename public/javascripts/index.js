@@ -208,7 +208,7 @@ var basicOption1 = {
     if(type === "COOLING"){
 
       cost = dictionary.get(coolingCapacity,Math.round(temperature));
-      if (cost == "undefined"){
+      if (cost == undefined){
         console.log("here!!!!!")
         cost = 0;
       } 
@@ -216,7 +216,7 @@ var basicOption1 = {
     } 
     if(type === "HEATING"){
       cost = dictionary.get(coolingCapacity,Math.round(temperature));
-      if (cost == "undefined"){
+      if (cost == undefined){
         console.log("here!!!!!")
         cost = 0;
       } 
