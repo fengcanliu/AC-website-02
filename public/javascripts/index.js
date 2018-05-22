@@ -138,9 +138,9 @@ var data1 = {
       if(!obj.time || !obj.OTtemperature) {
         return;
       }
-      if(!obj1.time || !obj1.OTtemperatureH) {
-        return;
-      }
+      // if(!obj1.time || !obj1.OTtemperatureH) {
+      //   return;
+      // }
 
       timeData.push(counter*0.25);
       counter = counter+1;
