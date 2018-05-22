@@ -9,8 +9,7 @@ $(document).ready(function () {
   var actualData1 = [];
   var nosensorData1 = [];
   var cost;
-  var coolingCapacity;
-  var heatingCapacity;
+
 
   var counter = 1;
   var counter1 = 1;
@@ -207,21 +206,11 @@ var basicOption1 = {
     }
 
     if(type === "COOLING"){
-
-      console.log("coolingCapacity "+coolingCapacity);
-
-      if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined")){
-        cost = 0;
-      } else {
-        cost = dictionary.get(coolingCapacity,Math.round(temperature));
-      }
+      
+      cost = dictionary.get(coolingCapacity,Math.round(temperature));
     } 
     if(type === "HEATING"){
-       if (dictionary.get(coolingCapacity,Math.round(temperature) === "undefined")){
-        cost = 0;
-      } else {
-        cost = dictionary.get(coolingCapacity,Math.round(temperature));
-      } 
+      cost = dictionary.get(coolingCapacity,Math.round(temperature));
     }  
 
     return cost;
