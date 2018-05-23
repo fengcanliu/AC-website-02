@@ -207,7 +207,7 @@ var basicOption1 = {
         case 27:
           cost = dictionary.get(heatingCapacity,21);
           break;          
-      
+    }  
       //cost = dictionary.get(coolingCapacity,Math.round(temperature));
       if (cost == undefined){
          console.log("here!!!!!")
@@ -369,6 +369,7 @@ var basicOption1 = {
 
              console.log("acutal Equal "+costResultActual1+" noSensor Equal"+costResultNoSensor1);
 
+
             document.getElementById("heatingActualCost").innerHTML = " $"+costResultActual1.toFixed(2);
             document.getElementById("heatingNoSensorCost").innerHTML = " $"+costResultNoSensor1.toFixed(2); 
             document.getElementById("heatingMoneySaved").innerHTML = " $"+(costResultNoSensor1.toFixed(2)-costResultActual1.toFixed(2)).toFixed(2); 
@@ -380,7 +381,7 @@ var basicOption1 = {
              document.getElementById("heatingMoneySaved").innerHTML = " $"+(costResultNoSensor1.toFixed(2)-costResultActual1.toFixed(2)).toFixed(2); 
              console.log("Actural Temp is "+obj.actual+" acutal "+getCost(obj.roomsize, obj.actual, "HEATING")+" noSensor "+getCost(obj.roomsize, obj.noSensor, "HEATING"));   
           } else if(obj.noSensor == obj.OTtemperature) {
-            costResultActual1 = costResultActual1+getCost(obj.roomsize, obj.noSensor, "HEATING");;
+            costResultActual1 = costResultActual1+getCost(obj.roomsize, obj.noSensor, "HEATING");
             costResultNoSensor1 = costResultNoSensor1;
              document.getElementById("heatingActualCost").innerHTML = " $"+costResultActual1.toFixed(2);
              document.getElementById("heatingNoSensorCost").innerHTML = " $"+costResultNoSensor1.toFixed(2); 
