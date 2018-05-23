@@ -320,13 +320,23 @@ var basicOption1 = {
           if ((obj.actual == obj.noSensor) && (obj.noSensor == obj.OTtemperature) && (obj.actual == obj.OTtemperature)){
             costResultActual = costResultActual;
             costResultNoSensor = costResultNoSensor;
-
-            // console.log("acutal Equal "+costResultActual+" noSensor Equal"+costResultNoSensor);
-
-
             document.getElementById("coolingActualCost").innerHTML = " $"+costResultActual.toFixed(2);
             document.getElementById("coolingNoSensorCost").innerHTML = " $"+costResultNoSensor.toFixed(2); 
             document.getElementById("coolingMoneySaved").innerHTML = " $"+(costResultNoSensor.toFixed(2)-costResultActual.toFixed(2)).toFixed(2); 
+          } else if(obj.actual == obj.OTtemperature) {
+            costResultActual = costResultActual;
+            costResultNoSensor = costResultNoSensor+getCost(obj.roomsize, obj.noSensor, "COOLING");
+             document.getElementById("coolingActualCost").innerHTML = " $"+costResultActual.toFixed(2);
+             document.getElementById("coolingNoSensorCost").innerHTML = " $"+costResultNoSensor.toFixed(2); 
+             document.getElementById("coolingMoneySaved").innerHTML = " $"+(costResultNoSensor.toFixed(2)-costResultActual.toFixed(2)).toFixed(2); 
+             //console.log("Actural Temp is "+obj.actual+" acutal "+getCost(obj.roomsize, obj.actual, "HEATING")+" noSensor "+getCost(obj.roomsize, obj.noSensor, "HEATING"));   
+          } else if(obj.noSensor == obj.OTtemperature) {
+            costResultActual = costResultActual+getCost(obj.roomsize, obj.noSensor, "COOLING");
+            costResultNoSensor = costResultNoSensor;
+             document.getElementById("coolingActualCost").innerHTML = " $"+costResultActual.toFixed(2);
+             document.getElementById("coolingNoSensorCost").innerHTML = " $"+costResultNoSensor.toFixed(2); 
+             document.getElementById("coolingMoneySaved").innerHTML = " $"+(costResultNoSensor.toFixed(2)-costResultActual.toFixed(2)).toFixed(2); 
+             //console.log("Actural Temp is "+obj.actual+" acutal "+getCost(obj.roomsize, obj.actual, "COOLING")+" noSensor "+getCost(obj.roomsize, obj.noSensor, "COOLING"));   
           } else {
             costResultActual = costResultActual+getCost(obj.roomsize, obj.actual, "COOLING");
             costResultNoSensor = costResultNoSensor+getCost(obj.roomsize, obj.noSensor, "COOLING");
