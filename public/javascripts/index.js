@@ -209,13 +209,12 @@ var basicOption1 = {
           break;          
       }
 
-
       if (cost == undefined){
          console.log("here!!!!!")
         cost = 0;
       } 
     }  
-
+    console.log("Cost is "+cost);
     return cost;
   }
 
