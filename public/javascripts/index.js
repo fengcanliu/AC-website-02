@@ -185,30 +185,30 @@ var basicOption1 = {
     } 
     if(type === "HEATING"){
       // console.log("+++++++Temp is "+temperature);
-      switch(Math.round(temperature)){
-        case 21:
-          cost = dictionary.get(heatingCapacity,27);
-          break;
-        case 22:
-          cost = dictionary.get(heatingCapacity,26);
-          break;
-        case 23:
-          cost = dictionary.get(heatingCapacity,25);
-          break;
-        case 24:
-          cost = dictionary.get(heatingCapacity,24);
-          break;
-        case 25:
-          cost = dictionary.get(heatingCapacity,23);
-          break;
-        case 26:
-          cost = dictionary.get(heatingCapacity,22);
-          break;
-        case 27:
-          cost = dictionary.get(heatingCapacity,21);
-          break;          
+      // switch(Math.round(temperature)){
+      //   case 21:
+      //     cost = dictionary.get(heatingCapacity,27);
+      //     break;
+      //   case 22:
+      //     cost = dictionary.get(heatingCapacity,26);
+      //     break;
+      //   case 23:
+      //     cost = dictionary.get(heatingCapacity,25);
+      //     break;
+      //   case 24:
+      //     cost = dictionary.get(heatingCapacity,24);
+      //     break;
+      //   case 25:
+      //     cost = dictionary.get(heatingCapacity,23);
+      //     break;
+      //   case 26:
+      //     cost = dictionary.get(heatingCapacity,22);
+      //     break;
+      //   case 27:
+      //     cost = dictionary.get(heatingCapacity,21);
+      //     break;          
       }
-
+      cost = dictionary.get(coolingCapacity,Math.round(temperature));
       if (cost == undefined){
          console.log("here!!!!!")
         cost = 0;
