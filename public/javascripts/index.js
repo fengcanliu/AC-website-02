@@ -185,7 +185,7 @@ var basicOption1 = {
     } 
     if(type === "HEATING"){
       // console.log("+++++++Temp is "+temperature);
-      switch(temperature){
+      switch(Math.round(temperature)){
         case 21:
           cost = dictionary.get(heatingCapacity,27);
           break;
