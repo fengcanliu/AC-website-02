@@ -214,7 +214,7 @@ var basicOption1 = {
         cost = 0;
       } 
     }  
-    console.log("Cost is "+cost);
+    console.log("Cost for temp "+Math.round(temperature)+" is "+cost);
     return cost;
   }
 
