@@ -184,31 +184,31 @@ var basicOption1 = {
 
     } 
     if(type === "HEATING"){
-      // console.log("+++++++Temp is "+temperature);
-      // switch(Math.round(temperature)){
-      //   case 21:
-      //     cost = dictionary.get(heatingCapacity,27);
-      //     break;
-      //   case 22:
-      //     cost = dictionary.get(heatingCapacity,26);
-      //     break;
-      //   case 23:
-      //     cost = dictionary.get(heatingCapacity,25);
-      //     break;
-      //   case 24:
-      //     cost = dictionary.get(heatingCapacity,24);
-      //     break;
-      //   case 25:
-      //     cost = dictionary.get(heatingCapacity,23);
-      //     break;
-      //   case 26:
-      //     cost = dictionary.get(heatingCapacity,22);
-      //     break;
-      //   case 27:
-      //     cost = dictionary.get(heatingCapacity,21);
-      //     break;          
+      console.log("+++++++Temp is "+temperature);
+      switch(Math.round(temperature)){
+        case 21:
+          cost = dictionary.get(heatingCapacity,27);
+          break;
+        case 22:
+          cost = dictionary.get(heatingCapacity,26);
+          break;
+        case 23:
+          cost = dictionary.get(heatingCapacity,25);
+          break;
+        case 24:
+          cost = dictionary.get(heatingCapacity,24);
+          break;
+        case 25:
+          cost = dictionary.get(heatingCapacity,23);
+          break;
+        case 26:
+          cost = dictionary.get(heatingCapacity,22);
+          break;
+        case 27:
+          cost = dictionary.get(heatingCapacity,21);
+          break;          
       
-      cost = dictionary.get(coolingCapacity,Math.round(temperature));
+      //cost = dictionary.get(coolingCapacity,Math.round(temperature));
       if (cost == undefined){
          console.log("here!!!!!")
         cost = 0;
@@ -369,10 +369,23 @@ var basicOption1 = {
 
              console.log("acutal Equal "+costResultActual1+" noSensor Equal"+costResultNoSensor1);
 
-
             document.getElementById("heatingActualCost").innerHTML = " $"+costResultActual1.toFixed(2);
             document.getElementById("heatingNoSensorCost").innerHTML = " $"+costResultNoSensor1.toFixed(2); 
             document.getElementById("heatingMoneySaved").innerHTML = " $"+(costResultNoSensor1.toFixed(2)-costResultActual1.toFixed(2)).toFixed(2); 
+          } else if(obj.actual == obj.OTtemperature) {
+            costResultActual1 = costResultActual1;
+            costResultNoSensor1 = costResultNoSensor1+getCost(obj.roomsize, obj.noSensor, "HEATING");
+             document.getElementById("heatingActualCost").innerHTML = " $"+costResultActual1.toFixed(2);
+             document.getElementById("heatingNoSensorCost").innerHTML = " $"+costResultNoSensor1.toFixed(2); 
+             document.getElementById("heatingMoneySaved").innerHTML = " $"+(costResultNoSensor1.toFixed(2)-costResultActual1.toFixed(2)).toFixed(2); 
+             console.log("Actural Temp is "+obj.actual+" acutal "+getCost(obj.roomsize, obj.actual, "HEATING")+" noSensor "+getCost(obj.roomsize, obj.noSensor, "HEATING"));   
+          } else if(obj.noSensor == obj.OTtemperature) {
+            costResultActual1 = costResultActual1+getCost(obj.roomsize, obj.noSensor, "HEATING");;
+            costResultNoSensor1 = costResultNoSensor1;
+             document.getElementById("heatingActualCost").innerHTML = " $"+costResultActual1.toFixed(2);
+             document.getElementById("heatingNoSensorCost").innerHTML = " $"+costResultNoSensor1.toFixed(2); 
+             document.getElementById("heatingMoneySaved").innerHTML = " $"+(costResultNoSensor1.toFixed(2)-costResultActual1.toFixed(2)).toFixed(2); 
+             console.log("Actural Temp is "+obj.actual+" acutal "+getCost(obj.roomsize, obj.actual, "HEATING")+" noSensor "+getCost(obj.roomsize, obj.noSensor, "HEATING"));   
           } else {
             costResultActual1 = costResultActual1+getCost(obj.roomsize, obj.actual, "HEATING");
             costResultNoSensor1 = costResultNoSensor1+getCost(obj.roomsize, obj.noSensor, "HEATING");
