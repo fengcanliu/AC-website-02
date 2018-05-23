@@ -207,7 +207,7 @@ var basicOption1 = {
       //   case 27:
       //     cost = dictionary.get(heatingCapacity,21);
       //     break;          
-      }
+      
       cost = dictionary.get(coolingCapacity,Math.round(temperature));
       if (cost == undefined){
          console.log("here!!!!!")
