@@ -340,7 +340,7 @@ var basicOption1 = {
           // console.log('Costing'+getCost(obj.roomsize, obj.actual, "COOLING"));
       } else if(obj.deviceid === 'room_heated') {
           counter1 = counter1+1;
-          timeData1.push(counter*0.25);
+          timeData1.push(counter1*0.25);
           temperatureData1.push(obj.OTtemperature);
           var len = timeData1.length;
           if (len > maxLen) {
