@@ -58,7 +58,7 @@ $(document).ready(function () {
       },
       {
         fill: false,
-        label: 'actual',
+        label: 'With IoT Solution',
         yAxisID: 'Temperature',
         borderColor: "rgba(24, 120, 240, 1)",
         pointBoarderColor: "rgba(24, 120, 240, 1)",
@@ -69,7 +69,7 @@ $(document).ready(function () {
       },
       {
         fill: false,
-        label: 'noSensor',
+        label: 'Without IoT Solution',
         yAxisID: 'Temperature',
         borderColor: "rgba(124, 252, 0, 1)",
         pointBoarderColor: "rgba(124, 252, 0, 1)",
@@ -97,7 +97,7 @@ $(document).ready(function () {
       },
       {
         fill: false,
-        label: 'actual',
+        label: 'With IoT Solution',
         yAxisID: 'Temperature',
         borderColor: "rgba(24, 120, 240, 1)",
         pointBoarderColor: "rgba(24, 120, 240, 1)",
@@ -108,7 +108,7 @@ $(document).ready(function () {
       },
       {
         fill: false,
-        label: 'noSensor',
+        label: 'Without IoT Solution',
         yAxisID: 'Temperature',
         borderColor: "rgba(124, 252, 0, 1)",
         pointBoarderColor: "rgba(124, 252, 0, 1)",
